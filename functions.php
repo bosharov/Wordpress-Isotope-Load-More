@@ -15,13 +15,11 @@
 		$offset = $_POST['offset'];
 
 		if($offset != NULL && absint($offset)) {
-			// Finally, we'll set the query arguments and instantiate WP_Query
-			$display_count = 20;
 
 			// Finally, we'll set the query arguments and instantiate WP_Query
 			$query_args = array(
 			  'post_type'  =>  'portfolio',
-			  'posts_per_page'     =>  $display_count,
+			  'posts_per_page'     =>  $offset,
 			  'offset'     =>  $offset
 			);
 			$post_list = array();
