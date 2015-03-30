@@ -6,25 +6,28 @@ jQuery(document).ready(function($) {
             layoutMode: 'fitRows'
         }
     });
-	var has_run = false;
-	$('button.load-more-posts').click(function(e) {
+    var has_run = false;
+    var init_offset = 0;
+    $('button.load-more-posts').click(function(e) {
 
         e.preventDefault();
-		var button = $(this);
+        var button = $(this);
 
         // Disable button
-		button.prop( "disabled" , true );
+        button.prop( "disabled" , true );
 
         // Record Nonce
         var nonce = $(this).data("nonce");
         
         if(has_run == false) {
-        	button.data('offset', 10);
+            button.data('offset', $(this).data("offset"));
+            init_offset = $(this).data("offset");
         }
         
         // Set AJAX parameters
-		data = {
+        data = {
             action: 'mft_load_more_ajax',
+            init_offset: init_offset,
             offset: button.data('offset'),
             nonce: nonce
         };
@@ -45,6 +48,7 @@ jQuery(document).ready(function($) {
 
               // Append Val
               $container.append(val).isotope( 'appended', val );
+              
             });
 
             // Undo Button Disable
@@ -61,6 +65,6 @@ jQuery(document).ready(function($) {
             
         });
 
-	});
+    });
     
 });

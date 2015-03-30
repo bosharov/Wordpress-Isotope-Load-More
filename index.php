@@ -19,5 +19,6 @@
 
 </div>
 <button class="load-more-posts" data-nonce="<?php echo wp_create_nonce('mft_load_more_ajax'); ?>" data-offset="10">Load More Posts</button>
+
        
 <?php wp_footer(); ?>
